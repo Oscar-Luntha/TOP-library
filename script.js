@@ -2,6 +2,9 @@ const myLibrary = [
 
 ]
 function Book(id, title , author, pages, readStatus){
+    if(!new.target){
+        console.log("Book need to be created with the new keyword")
+    }
     this.id = id;
     this.title = title;
     this.author = author;
