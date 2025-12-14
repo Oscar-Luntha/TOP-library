@@ -21,3 +21,4 @@ function createBook(title , author, pages){
     myLibrary.push(book)
     return myLibrary
 }
+console.log(myLibrary[1].id)
