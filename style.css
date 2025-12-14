@@ -1,13 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Annie+Use+Your+Telescope&display=swap');
 *{
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
+}
+body {
+    padding: 0px 50px ;
 }
 header {
     display: flex;
     justify-content: space-between;
     background-color: #ffffff;
-    padding: 20px;
+    padding-top: 10px;
     gap: 10px;
 }
 header h1{
@@ -18,12 +23,27 @@ header h1{
 }
 button {
     font-family: "Indie flower";
-    width: 10%;
-    padding: 5px 20px;
+    width: clamp(150px, 20% , 300px);
+    height: 50px;
     border-radius: 20px;
     font-size: 20px;
     font-weight: 800;
     color: white;
     background-color: #1892d3;
     border: none;
+}
+.books{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 10px
+}
+.card {
+    width: clamp(18rem, 30vw, 25rem);
+    border-left: 5px solid #efb428;
+    border-radius: 3px;
+    background-color: #ffffff;
+    padding: 10px;
+    box-shadow: 0 0 5px #808080;
+    margin-top: 5%;
 }
