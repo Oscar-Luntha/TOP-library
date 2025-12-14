@@ -4,6 +4,7 @@ const myLibrary = [
     {id : "8d217608-3703-4180-b8b1-a7e60295599a", title : "The art of the sword", author : "Samurai Jack", pages: 250, readStatus : false},
     {id : "5e64b471-f4c0-4213-8041-fc4c4dca43e4", title : "Project X", author : "Prof", pages : 350, readStatus : true}
 ]
+const container = document.querySelector(".books")
 function Book(id, title , author, pages, readStatus){
     if(!new.target){
         console.log("Book need to be created with the new keyword")
@@ -21,4 +22,14 @@ function createBook(title , author, pages){
     myLibrary.push(book)
     return myLibrary
 }
-console.log(myLibrary[1].id)
+document.addEventListener("DOMContentLoaded", () => {
+    const container = document.querySelector(".books");
+
+    myLibrary.forEach(book => {
+        const card = document.createElement("div");
+        card.classList.add("card");
+        card.innerHTML = `<h3>Title: ${book.title}</h3> <small class = "book-id"> ID: ${book.id} </small>  <div> <p>Author : ${book.author} </p> <p> Page count : ${book.pages} </p> </div> <div class="read-status"> ${book.readStatus} </div>`;
+        container.appendChild(card);
+    });
+});
+
