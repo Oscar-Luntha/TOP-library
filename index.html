@@ -11,11 +11,27 @@
         <h1>
             My Library
         </h1>
-        <button>Add Book</button>
+        <button id="show-dialog">Add Book</button>
     </header>
-    <div class="books" id="books">
-        
-</div>
+    <div class="books" id="books"></div>
+    <dialog>
+
+        <form action="">
+            <div>
+                <label for="title">Book Title</label>
+                <input type="text" name="title" id="title" required>
+            </div>
+            <div>
+                <label for="author">Book author</label>
+                <input type="text" name="author" id="author" required>
+            </div>
+            <div>
+                <label for="pages">Page count</label>
+                <input type="number" name="pages" id="pages">
+            </div>
+        </form>
+        <button autofocus id="dialog-close">Close</button>
+    </dialog>
     <script src="script.js"></script>
 </body>
 </html>
