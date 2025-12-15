@@ -18,6 +18,7 @@ const container = document.querySelector(".books")
 const dialogCloseButton = document.querySelector("#dialog-close")
 const dialog = document.querySelector("dialog");
 const showDialogButton = document.querySelector("#show-dialog")
+const submitButton = document.querySelector("#add-book")
 function Book(id, title , author, pages, readStatus){
     if(!new.target){
         console.log("Book need to be created with the new keyword")
@@ -41,10 +42,15 @@ dialogCloseButton.addEventListener("click", ()=>{
 showDialogButton.addEventListener("click", ()=> {
     dialog.showModal()
 })
-
+submitButton.addEventListener("click", (event)=> {
+    event.preventDefault()
+    const title = document.getElementById("title").value
+    const author = document.getElementById("author").value
+    const pages = document.getElementById("pages").value
+    createBook(title, author, pages)
+})
 document.addEventListener("DOMContentLoaded", () => {
     const container = document.querySelector(".books");
-
     myLibrary.forEach(book => {
         const card = document.createElement("div");
         card.classList.add("card");
