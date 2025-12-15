@@ -49,14 +49,24 @@ submitButton.addEventListener("click", (event)=> {
     const pages = document.getElementById("pages").value
     createBook(title, author, pages)
 })
-document.addEventListener("DOMContentLoaded", () => {
-    const container = document.querySelector(".books");
+document.addEventListener("DOMContentLoaded", renderLibrary );
+function renderLibrary() {
+    container.innerHTML = ""; 
     myLibrary.forEach(book => {
         const card = document.createElement("div");
         card.classList.add("card");
-        card.innerHTML = `<h3>Title: ${book.title}</h3> <small class = "book-id"> ID: ${book.id} </small>  <div> <p>Author : ${book.author} </p> <p> Page count : ${book.pages} </p> </div> <div class="read-status"> ${book.readStatus} </div>`;
+        card.innerHTML = `
+            <h3>Title: ${book.title}</h3>
+            <small class="book-id">ID: ${book.id}</small>
+            <div>
+                <p>Author: ${book.author}</p>
+                <p>Page count: ${book.pages}</p>
+            </div>
+            <div class="read-status">${book.readStatus}</div>
+        `;
+
         container.appendChild(card);
     });
-});
+}
 
 
