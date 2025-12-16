@@ -13,7 +13,7 @@
         </h1>
         <button id="show-dialog">Add Book</button>
     </header>
-    <div class="books" id="books"></div>
+    <ul class="books" id="books"></ul>
     <dialog>
         <h2>Add new Book</h2>
         <form action="">
@@ -27,7 +27,7 @@
             </div>
             <div>
                 <label for="pages">Page count</label>
-                <input type="number" name="pages" id="pages">
+                <input type="number" name="pages" id="pages" required>
             </div>
             <button type="submit" id="add-book">Add</button>
         </form>
