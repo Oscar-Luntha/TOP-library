@@ -4,6 +4,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: "Indie flower", cursive;
 }
 body {
     padding: 0px 50px ;
@@ -123,4 +124,10 @@ dialog::backdrop {
 dialog {
     position: relative;
     margin: auto;
+}
+dialog button {
+    font-size: medium;
+    padding: 5px;
+    margin-top: 10px;
+    background-color: #1e1e1e;
 }
