@@ -1,16 +1,5 @@
 const myLibrary = [
     {id : "878840f1-99da-4677-97ee-2c63ebf4347e", title : "Good turns Bad", author : "John doe", pages : 300, readStatus : true},
-    {id : "878840f1-99da-4677-97ee-2c63ebf4347e", title : "Good turns Bad", author : "John doe", pages : 300, readStatus : true},
-    {id : "878840f1-99da-4677-97ee-2c63ebf4347e", title : "Good turns Bad", author : "John doe", pages : 300, readStatus : true},
-    {id : "878840f1-99da-4677-97ee-2c63ebf4347e", title : "Good turns Bad", author : "John doe", pages : 300, readStatus : true},
-    {id : "8d217608-3703-4180-b8b1-a7e60295599a", title : "The art of the sword", author : "Samurai Jack", pages: 250, readStatus : false},
-    {id : "8d217608-3703-4180-b8b1-a7e60295599a", title : "The art of the sword", author : "Samurai Jack", pages: 250, readStatus : false},
-    {id : "878840f1-99da-4677-97ee-2c63ebf4347e", title : "Good turns Bad", author : "John doe", pages : 300, readStatus : true},
-    {id : "878840f1-99da-4677-97ee-2c63ebf4347e", title : "Good turns Bad", author : "John doe", pages : 300, readStatus : true},
-    {id : "296fa314-f9f7-46ad-a979-4b767736b467", title : "Sage Chronicles", author : "Sage", pages: 200, readStatus : false},
-    {id : "8d217608-3703-4180-b8b1-a7e60295599a", title : "The art of the sword", author : "Samurai Jack", pages: 250, readStatus : false},
-    {id : "8d217608-3703-4180-b8b1-a7e60295599a", title : "The art of the sword", author : "Samurai Jack", pages: 250, readStatus : false},
-    {id : "8d217608-3703-4180-b8b1-a7e60295599a", title : "The art of the sword", author : "Samurai Jack", pages: 250, readStatus : false},
     {id : "8d217608-3703-4180-b8b1-a7e60295599a", title : "The art of the sword", author : "Samurai Jack", pages: 250, readStatus : false},
     {id : "5e64b471-f4c0-4213-8041-fc4c4dca43e4", title : "Project X", author : "Prof", pages : 350, readStatus : true}
 ]
@@ -48,12 +37,14 @@ submitButton.addEventListener("click", (event)=> {
     const author = document.getElementById("author").value
     const pages = document.getElementById("pages").value
     createBook(title, author, pages)
+    renderLibrary()
+    dialog.close()
 })
 document.addEventListener("DOMContentLoaded", renderLibrary );
 function renderLibrary() {
     container.innerHTML = ""; 
     myLibrary.forEach(book => {
-        const card = document.createElement("div");
+        const card = document.createElement("li");
         card.classList.add("card");
         card.innerHTML = `
             <h3>Title: ${book.title}</h3>
@@ -63,10 +54,22 @@ function renderLibrary() {
                 <p>Page count: ${book.pages}</p>
             </div>
             <div class="read-status">${book.readStatus}</div>
+            <button class="delete-btn">Delete</button>
         `;
 
         container.appendChild(card);
     });
 }
+container.addEventListener("click", (event) => {
+    if (!event.target.classList.contains("delete-btn")) return;
 
+    const card = event.target.closest(".card");
+    const bookId = card.querySelector(".book-id").textContent.replace("ID: ", "");
 
+    const index = myLibrary.findIndex(book => book.id === bookId);
+    if (index !== -1) {
+        myLibrary.splice(index, 1);
+    }
+
+    renderLibrary();
+});
